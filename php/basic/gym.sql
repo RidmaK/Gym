@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2020 at 08:45 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.6
+-- Generation Time: Jun 02, 2020 at 11:59 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -41,32 +41,11 @@ CREATE TABLE `payments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
---
-
-CREATE TABLE `role` (
-  `id` int(11) NOT NULL,
-  `role` varchar(100) DEFAULT NULL,
-  `role_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `role`
---
-
-INSERT INTO `role` (`id`, `role`, `role_id`) VALUES
-(1, 'administrator', 1),
-(2, 'coach', 2),
-(3, 'player', 3);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `user_id` varchar(12) NOT NULL,
   `first_name` varchar(100) DEFAULT NULL,
   `last_name` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
@@ -75,8 +54,19 @@ CREATE TABLE `user` (
   `bdate` date DEFAULT NULL,
   `gender` varchar(100) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
-  `password` varchar(100) DEFAULT NULL
+  `password` varchar(100) DEFAULT NULL,
+  `role` varchar(6) NOT NULL,
+  `role_id` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `phone`, `nic`, `bdate`, `gender`, `address`, `password`, `role`, `role_id`) VALUES
+('admin', 'Admin', 'User', 'admin@admin.com', 710000001, '900000001v', '1980-05-05', 'male', 'address1', '7c6a180b36896a0a8c02787eeafb0e4c', 'admin', 1),
+('coach', 'Coach', 'User', 'coach@coach.com', 710000002, '900000002v', '1979-12-09', 'male', 'address2', '6cb75f652a9b52798eb6cf2201057c73', 'coach', 2),
+('player', 'Player', 'User', 'player@player.com', 710000003, '900000003', '1990-08-11', 'male', 'address3', '819b0643d6b89dc9b579fdfc9094f28e', 'player', 3);
 
 --
 -- Indexes for dumped tables
@@ -89,16 +79,10 @@ ALTER TABLE `payments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -108,18 +92,6 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `role`
---
-ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
