@@ -17,6 +17,7 @@
 <?php 
 session_start();
 include('../../php/basic/connection.php');
+$user=$_SESSION['player_id'];
 if(!isset($_SESSION['player_id'])) {	
 	header('location:/?noPermission=1');
 	}
@@ -41,7 +42,7 @@ if(!isset($_SESSION['player_id'])) {
     <link rel="stylesheet" type="text/css" href="../../assets/demo/demo.css" >
     
     <title>
-        Black Dashboard by Creative Tim
+        Powershack
     </title>
 </head>
 
@@ -66,56 +67,69 @@ if(!isset($_SESSION['player_id'])) {
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <i class="tim-icons icon-simple-remove"></i>
-                            </button>
+                        <!-- <form action="search.php" method="post">
+                                <input type="text" name="search" class="input" style="width: 900px;border:none;box-shadow:none;" id="inlineFormInputGroup" placeholder="SEARCH">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <i class="tim-icons icon-simple-remove"></i>
+                                </button>
+                            </form> -->
                         </div>
                     </div>
                 </div>
             </div>
            <!-- End Navbar -->
-           
+           <?php
+            $query=mysqli_query($conn,"SELECT * from player where username='{$user}'");
+            $row=mysqli_fetch_array($query);
+           ?>
             <div class="content">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="title">Edit Profile</h5>
+                                <h5 class="title">Profile</h5>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form action="admin-user.php" method="post">
                                     <div class="row">
-                                        <div class="col-md-5 pr-md-1">
+                                        <div class="col-md-3 pr-md-1">
+
                                             <div class="form-group">
-                                                <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled="" placeholder="Company" value="Creative Code Inc.">
+                                                <label>Plan</label>
+                                                <input type="text" class="form-control" name="username"  value="<?php echo $row['plan']?>" >
+
                                             </div>
                                         </div>
-                                        <div class="col-md-3 px-md-1">
+                                        <div class="col-md-4 px-md-1">
                                             <div class="form-group">
                                                 <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                                <input type="text" class="form-control" name="username"  value="<?php echo $row['username']?>" >
                                             </div>
                                         </div>
-                                        <div class="col-md-4 pl-md-1">
+                                        <div class="col-md-5 pl-md-1">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" placeholder="mike@email.com">
+                                                <input type="text" class="form-control" name="email"  value="<?php echo $row['email']?>" >
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 pr-md-1">
+                                        <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                                <input type="text" class="form-control" required name="fname"  value="<?php echo $row['fname']?>" >
                                             </div>
                                         </div>
-                                        <div class="col-md-6 pl-md-1">
+                                        <div class="col-md-4 pl-md-1">
                                             <div class="form-group">
                                                 <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                                <input type="text" class="form-control" required name="lname"  value="<?php echo $row['lname']?>" >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 pl-md-1">
+                                            <div class="form-group">
+                                                <label>Birthday</label>
+                                                <input type="text" class="form-control" required name="bdate"  value="<?php echo $row['bdate']?>" >
                                             </div>
                                         </div>
                                     </div>
@@ -123,44 +137,51 @@ if(!isset($_SESSION['player_id'])) {
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                                <input type="text" class="form-control" name="address"  value="<?php echo $row['address']?>" >
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control" placeholder="City" value="Mike">
+                                                <label>NIC</label>
+                                                <input type="text" name="nic" class="form-control" placeholder="NIC"  value="<?php echo $row['nic']?>" >
                                             </div>
                                         </div>
                                         <div class="col-md-4 px-md-1">
                                             <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
+                                                <label>Blood Group</label>
+                                                <input type="text" required name="gender" class="form-control" value="<?php echo $row['bgroup']?>" >
+
                                             </div>
                                         </div>
                                         <div class="col-md-4 pl-md-1">
                                             <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
+                                                <label>Contact</label>
+                                                <input type="text" required name="mobile" class="form-control"  value="<?php echo $row['mobile']?>">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                                <label>Gender</label>
+                                                <input type="text" required name="gender" class="form-control" value="<?php echo $row['gender']?>" >
+
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="col-md-4 pr-md-1">
+                                            <div class="form-group">
+                                                <label>Weiht(Kg) category</label>
+                                                <input type="text" required name="gender" class="form-control" value="<?php echo $row['weight']?>" >
+
+                                                 </div> </div> </div> </div> <div class="card-footer">
+                                                            <!-- <button type="submit" name="saveuser" class="btn btn-fill btn-primary">Save</button> -->
+                                            </div>
                                 </form>
                             </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-fill btn-primary">Save</button>
-                            </div>
-                        </div>
+                            
+                        
                     </div>
                     <div class="col-md-4">
                         <div class="card card-user">

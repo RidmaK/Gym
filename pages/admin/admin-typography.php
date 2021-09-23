@@ -41,7 +41,7 @@ if(!isset($_SESSION['admin_id'])) {
     <link rel="stylesheet" type="text/css" href="../../assets/demo/demo.css" >
     
     <title>
-        Black Dashboard by Creative Tim
+    PowerSheark
     </title>
 </head>
 

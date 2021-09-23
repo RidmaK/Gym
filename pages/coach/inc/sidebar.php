@@ -1,3 +1,9 @@
+<style>
+    .sidebar p{
+        font-size: 14px;
+        font-weight: bolder;
+    }
+</style>
 <div class="sidebar">
     <div class="sidebar-wrapper">
         <div class="logo">

@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="iw-edge">
 
-    <?php 
+    <?php
     include './inc/basic/include-css.php';
     include './inc/basic/include-css-font.php';
     ?>
 
     <link rel="stylesheet" type="text/css" href="./assets/css/style-home.css">
-    
+
 
     <title>PowerShark</title>
 
@@ -40,11 +40,11 @@
 
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
 
                             <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">Sign-In</a>
 
-                        </li>
+                        </li> -->
 
 
 
@@ -107,19 +107,30 @@
                         <!-- Panel 1 -->
 
                         <!-- Panel 2 -->
-                        <div class="tab-pane fade" id="panel2" role="tabpanel">
+                        <!-- <div class="tab-pane fade" id="panel2" role="tabpanel">
 
                             <br>
 
                             <div class=" mt-1 mb-1">
 
-                                <form action="Room_admin.php" method="post">
+                                <form action="" method="post">
                                     <div class="modal-body">
+                                    <div class="form-group row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-4"> <label class="mt-2">User_id :</label></div>
+                                            <div class="col-md-7">
+                                                <input type="text" name="user_id" class="form-control" placeholder="Enter First Name">
+
+                                            </div>
+
+
+
+                                        </div>
                                         <div class="form-group row">
                                             <div class="col-md-1"></div>
                                             <div class="col-md-4"> <label class="mt-2">First Name :</label></div>
                                             <div class="col-md-7">
-                                                <input type="text" name="Hostel_id" class="form-control" placeholder="Enter First Name">
+                                                <input type="text" name="first_name" class="form-control" placeholder="Enter First Name">
                                             </div>
 
 
@@ -129,7 +140,7 @@
                                             <div class="col-md-1"></div>
                                             <div class="col-md-4"> <label class="mt-2">Last Name :</label></div>
                                             <div class="col-md-7">
-                                                <input type="text" name="Hostel_id" class="form-control" placeholder="Enter Last Name">
+                                                <input type="text" name="last_name" class="form-control" placeholder="Enter Last Name">
                                             </div>
 
 
@@ -139,7 +150,7 @@
                                             <div class="col-md-1"></div>
                                             <div class="col-md-4"> <label class="mt-2">Email :</label></div>
                                             <div class="col-md-7">
-                                                <input type="email" name="Hostel_id" class="form-control" placeholder="Enter Email">
+                                                <input type="email" name="email" class="form-control" placeholder="Enter Email">
                                             </div>
 
 
@@ -149,7 +160,7 @@
                                             <div class="col-md-1"></div>
                                             <div class="col-md-4"><label class="mt-2">Password :</label></div>
                                             <div class="col-md-7">
-                                                <input type="password" name="Room_id" class="form-control" placeholder="Enter Password">
+                                                <input type="password" name="password1" class="form-control" placeholder="Enter Password">
 
                                             </div>
 
@@ -159,7 +170,7 @@
                                             <div class="col-md-1"></div>
                                             <div class="col-md-4"> <label class="mt-2">Re-Password :</label></div>
                                             <div class="col-md-7">
-                                                <input type="password" name="Room_id" class="form-control" placeholder="Enter Re-Password">
+                                                <input type="password" name="password2" class="form-control" placeholder="Enter Re-Password">
                                             </div>
 
 
@@ -177,11 +188,19 @@
 
                             </div>
 
-
-
+                            <?php include('./php/basic/connection.php'); ?>
+                            <?php
+                            if (isset($_POST['registerbtn'])) {
+                                extract($_POST);
+                                $password = md5($password2);
+                                if ($password1 == $password2) {
+                                    mysqli_query($conn, "insert into user (user_id,first_name,last_name,email,password,role_id) values('$user_id','$first_name','$last_name','$email','$password','3')");
+                                }
+                            }
+                            ?>
                         </div>
                         <!-- Panel 2 -->
-
+ 
 
 
                     </div>
@@ -338,7 +357,7 @@
 
             <li class="wow fadeInLeft"> <a href="#contact" class="btn btn-info" style="font-size: 11px;"><b>CONTACT</b> </a></li>
             <li class="wow fadeInLeft">
-                <button type="submit" class="btn btn-orange" style="font-size: 11px;"  data-toggle="modal" data-target="#addadminprofile">Login</button><br><br>
+                <button type="submit" class="btn btn-orange" style="font-size: 11px;" data-toggle="modal" data-target="#addadminprofile">Login</button><br><br>
             </li>
 
         </ul>
@@ -350,46 +369,48 @@
             <h2 class="text-uppercase text-center font-weight-bold my-4 wow fadeIn service" style="margin-top: 20px;z-index:9999999" data-wow-delay="0.2s">SERVICES
             </h2>
             <div class="row">
-               
+
                 <div class="col-md-4">
-                   <center> <img src="./assets/img/7.png" style="width: 360px; height: 400px;margin-top:20px;" class="img-fluid  wow fadeInLeft"></center>
+                    <center> <img src="./assets/img/7.png" style="width: 360px; height: 400px;margin-top:20px;" class="img-fluid  wow fadeInLeft"></center>
                 </div>
                 <div class="col-md-7 feature-box">
-                    <div class="row row1 mt-4" >
+                    <div class="row row1 mt-4">
                         <div class="col-md-2">
                             <center> <i class="fa fa-trophy wow fadeInUp mt-4" style="font-size: 50px;"></i>
                             </center>
                         </div>
                         <div class="col-md-8 wow fadeInRight mt-1" style="margin-left:40px ">
-                           <center> <h4>Certified Trainers</h4>
-                            <p style="font-size:12px">you can create your own Web site.
-                                This tutorial teaches you everything about HTML.</p></center>
+                            <center>
+                                <h4>Certified Trainers</h4>
+                                <p style="font-size:12px">you can create your own Web site.
+                                    This tutorial teaches you everything about HTML.</p>
+                            </center>
                         </div>
                     </div>
 
-                    <div class="row row1 mt-4" >
+                    <div class="row row1 mt-4">
                         <div class="col-md-2">
                             <center><i class="fa fa-heartbeat wow fadeInUp mt-4" style="font-size: 50px;"></i></center>
                         </div>
                         <div class="col-md-8 wow fadeInRight mt-1" style="margin-left:40px ">
                             <center>
-                            <h4>Free Consultation</h4>
-                            <p style="font-size:12px">you can create your own Web site.
-                                This tutorial teaches you everything about HTML.</p>
+                                <h4>Free Consultation</h4>
+                                <p style="font-size:12px">you can create your own Web site.
+                                    This tutorial teaches you everything about HTML.</p>
                             </center>
                         </div>
                     </div>
 
-                    <div class="row row1 mt-4" >
+                    <div class="row row1 mt-4">
                         <div class="col-md-2">
                             <center> <i class="fa fa-clock wow fadeInUp mt-4 " style="font-size: 50px;"></i>
                             </center>
                         </div>
                         <div class="col-md-8 wow fadeInRight mt-1" style="margin-left:40px ">
                             <center>
-                            <h4>Flexible Time</h4>
-                            <p style="font-size:12px">you can create your own Web site.
-                                This tutorial teaches you everything about HTML.</p>
+                                <h4>Flexible Time</h4>
+                                <p style="font-size:12px">you can create your own Web site.
+                                    This tutorial teaches you everything about HTML.</p>
                             </center>
                         </div>
                     </div>
@@ -407,7 +428,7 @@
             </h2>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card wow fadeInUp mb-4" >
+                    <div class="card wow fadeInUp mb-4">
                         <div class="img"><img src="./assets/img/3.jpg"></div>
                         <div class="details">
                             <i class="fa fa-star-o"></i>
@@ -856,7 +877,7 @@
 
     <!--- script-->
     <?php include './inc/basic/include-js.php'; ?>
-    
+
     <!-- Smooth scrol --->
     <script>
         var scroll = new SmoothScroll('a[href*="#"]');
@@ -866,7 +887,7 @@
     <script type="">
         new WOW().init();
     </script>
-    
+
 
 </body>
 

@@ -17,7 +17,7 @@
 <?php 
 session_start();
 include('../../php/basic/connection.php');
-if(!isset($_SESSION['admin_id'])) {	
+if(!isset($_SESSION['player_id'])) {	
 	header('location:/?noPermission=1');
 	}
 ?>
@@ -41,7 +41,7 @@ if(!isset($_SESSION['admin_id'])) {
     <link rel="stylesheet" type="text/css" href="../../assets/demo/demo.css" >
     
     <title>
-        Black Dashboard by Creative Tim
+       PowerShack
     </title>
 </head>
 
@@ -66,10 +66,12 @@ if(!isset($_SESSION['admin_id'])) {
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <i class="tim-icons icon-simple-remove"></i>
-                            </button>
+                        <form action="search.php" method="post">
+                                <input type="text" name="search" class="input" style="border:none;box-shadow:none;" id="inlineFormInputGroup" placeholder="SEARCH">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <i class="tim-icons icon-simple-remove"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

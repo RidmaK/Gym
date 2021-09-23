@@ -32,6 +32,11 @@
             
                 header('location:../pages/player/player-dashboard.php');
             }
+            else if($user['role_id']==4) {
+                $_SESSION['attend_id']=$user['user_id'];
+            
+                header('location:../pages/attend/attendence.php');
+            }
             
             else {
                 header('location:../index.php?error=1');

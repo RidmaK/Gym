@@ -1,3 +1,12 @@
+
+<?php 
+
+include('../../php/basic/connection.php');
+$user=$_SESSION['player_id'];
+$query="SELECT * FROM user where user_id='{$user}'";
+$res=mysqli_query($conn,$query);
+$row=mysqli_fetch_assoc($res);
+?>
 <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
     <div class="container-fluid">
         <div class="navbar-wrapper">
@@ -17,11 +26,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
-                <li class="search-bar input-group">
+                <!-- <li class="search-bar input-group">
                     <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split"></i>
                         <span class="d-lg-none d-md-block">Search</span>
                     </button>
-                </li>
+                </li> -->
                 <li class="dropdown nav-item">
                     <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <div class="notification d-none d-lg-block d-xl-block"></div>

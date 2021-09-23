@@ -12,3 +12,6 @@
 <script src="../../assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="../../assets/js/black-dashboard.min.js?v=1.0.0"></script>
+<!--  DataTable Plugin    -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>

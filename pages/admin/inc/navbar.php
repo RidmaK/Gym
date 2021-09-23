@@ -1,3 +1,56 @@
+<style>
+    @media screen and (max-width: 991px) {
+  .profile-photo .profile-photo-small {
+    margin-left: -2px;
+  }
+
+  .button-dropdown {
+    display: none;
+  }
+
+  #searchModal .modal-dialog {
+    margin: 20px;
+  }
+  #searchModal .modal-dialog .modal-content .input{
+    width: 800px;
+  }
+
+  #minimizeSidebar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .landing-page .section-story-overview .image-container:nth-child(2) {
+    margin-left: 0;
+    margin-bottom: 30px;
+  }
+  #searchModal .modal-dialog .modal-content .input{
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .page-header .container h6.category-absolute {
+    width: 90%;
+  }
+
+  .form-horizontal .col-form-label,
+  .form-horizontal .label-on-right {
+    text-align: inherit;
+    padding-top: 0;
+  }
+  #searchModal .modal-dialog .modal-content .input{
+    width: 400px;
+  }
+
+  .form-horizontal .col-form-label code,
+  .form-horizontal .label-on-right code {
+    padding: 0 10px;
+  }
+}
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
     <div class="container-fluid">
         <div class="navbar-wrapper">
@@ -17,7 +70,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
+           
                 <li class="search-bar input-group">
+                
                     <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split"></i>
                         <span class="d-lg-none d-md-block">Search</span>
                     </button>

@@ -1,11 +1,26 @@
+<?php 
+
+include('../../php/basic/connection.php');
+$user=$_SESSION['player_id'];
+$query="SELECT * FROM user where user_id='{$user}'";
+$res=mysqli_query($conn,$query);
+$row=mysqli_fetch_assoc($res);
+?>
+<style>
+    .sidebar p{
+        font-size: 14px;
+        font-weight: bolder;
+    }
+</style>
 <div class="sidebar">
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="javascript:void(0)" class="simple-text logo-mini">
-                AG
-            </a>
+           
+               <h5 style="color: #fff;"> POWERSHEARK</h5>
+           
+                
             <a href="javascript:void(0)" class="simple-text logo-normal">
-                ATHU GYM
+               <?php echo "hi "; echo $row['first_name'];?>
             </a>
         </div>
         <ul class="nav">
@@ -15,16 +30,16 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li class="s-icon">
+            <!-- <li class="s-icon">
                 <a href="./player-icons.php">
                     <i class="tim-icons icon-atom"></i>
                     <p>Icons</p>
                 </a>
-            </li>
+            </li> -->
             <li class="s-map">
-                <a href="./player-map.php">
+                <a href="./player-Shedule.php">
                     <i class="tim-icons icon-pin"></i>
-                    <p>Maps</p>
+                    <p>Shedule</p>
                 </a>
             </li>
             <li class="s-notification">
@@ -40,15 +55,15 @@
                 </a>
             </li>
             <li class="s-table">
-                <a href="./player-tables.php">
+                <a href="./player-attendence.php">
                     <i class="tim-icons icon-puzzle-10"></i>
-                    <p>Table List</p>
+                    <p>Attendence</p>
                 </a>
             </li>
             <li class="s-typography">
-                <a href="./player-typography.php">
+                <a href="./player-payments.php">
                     <i class="tim-icons icon-align-center"></i>
-                    <p>Typography</p>
+                    <p>Payments</p>
                 </a>
             </li>
         </ul>

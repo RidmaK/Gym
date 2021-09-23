@@ -10,6 +10,6 @@
 
     session_destroy();
 
-    header('location:/?logout=yes')
+    header('location:../index.php');
 
 ?>
